@@ -87,7 +87,7 @@ const ListarMascotas = () => {
             <div className='flex flex-row mt-28 justify-center'>
                 <label className='text-white font-semibold'>Administrar Mascotas</label>
                 <div className='ml-10'>
-                    <img className='rounded-full cursor-pointer' src={iconClose} onClick={() => logout()} alt="Cerrar" />
+                    <img className='rounded-full cursor-pointer' src={iconClose} onClick={() => logout()} alt="Cerrar"/>
                 </div>
             </div>
             <div className='mt-10'>
