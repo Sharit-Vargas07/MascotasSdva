@@ -5,7 +5,6 @@ import iconClose from '../../../public/img/btn-close.jpg'
 import save from '../../../public/img/btn-save.jpg'
 import modificar from '../../../public/img/btn-update.jpg'
 import iconCamera from '../../../public/img/iconCameraPng.png'
-import Swal from 'sweetalert2';
 import { useNavigate, useParams } from 'react-router-dom';
 import v from '../../../styles/variables.jsx';
 import Iconos from '../atomos/Iconos.jsx';

@@ -7,9 +7,9 @@ export const validar = async (req, res) => {
     try {
 
         let {email, password} = req.body
-        let sql = `SELECT email, password FROM user WHERE email='${email}' and password='${password}'`
-
-        const [user] = await pool.query(sql)
+        let sql = 'SELECT email, password FROM user WHERE email = ? AND password = ?';
+        const [user] = await pool.query(sql, [email, password]);
+        
 
         if(user.length>0){
             let token = jwt.sign({user}, process.env.AUT_SECRET, {expiresIn:process.env.AUT_EXPIRE})

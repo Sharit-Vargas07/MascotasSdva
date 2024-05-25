@@ -7,7 +7,7 @@ const storage = multer.diskStorage(
             cb(null, "public/img")
         },
         filename: function(req,file, cb){
-            cb(null, file.nombreorigin)
+            cb(null, file.nombre)
         }
     }
 )
@@ -19,7 +19,7 @@ export const registrar = async (req, res) => {
     try {
         
         const {nombre, raza, genero, categoria, dueno} = req.body
-        let image = req.file.nombreorigin
+        let image = req.file.nombre
 
         let sql = `INSERT INTO mascotas (nombre_mascota,fk_raza, fk_categoria, image, fk_genero, fk_dueno) VALUES (?, ?, ?, ?, ?, ?)`
 
@@ -74,7 +74,7 @@ export const actualizar = async (req, res) => {
     try {
         const {id} = req.params
         const {raza, genero, categoria } = req.body
-        let image = req.file.nombreorigin
+        let image = req.file.nombre
 
         let sql = `UPDATE mascotas SET fk_raza =IFNULL(?, fk_raza), fk_genero = IFNULL(?,fk_genero), fk_categoria = IFNULL(?, fk_categoria), SET image = IFNULL(?, image) WHERE id = ?`
         
