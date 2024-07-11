@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Document API Mascotas </title>
+</head>
+<body>
+
+    <h1> Documentacion API Mascotas</h1>
+    <hr>
+    <h2> Modulo Mascota </h2>
+    <hr>
+    
+    <h3> Requerimiento registrar Mascota </h3>
+
+    <table>
+        <tr>
+            <td> Numero </td>
+            <td> 1 </td>
+        </tr>
+        <tr>
+            <td> Nombre del servicio </td>
+            <td> Registrar Mascota </td>
+        </tr>
+        <tr>
+            <td> Url </td>
+            <td> /crearMascota </td>
+        </tr>
+        <tr>
+            <td> Descripción </td>
+            <td> Permite registrar nuevas Mascota</td>
+        </tr>
+        <tr>
+            <td> Verbo HTTP </td>
+            <td> Post </td>
+        </tr>
+        <tr>
+            <td> Header </td>
+            <td> Token: token </td>
+        </tr>
+        <tr>
+            <td> Usuario </td>
+            <td> Administrador </td>
+        </tr>
+        <tr>
+            <td> Petición body-form-data </td>
+            <td>
+                Json : 
+                    {
+                        "Nombre":"Lulu",
+                        "race_id":"1",
+                        category_id":"2",
+                        "Photo":"foto.svg",
+                        "gender_id":"1"
+
+                   }
+            </td>
+        </tr>
+        <tr>
+            <td>Respuesta Json </td>
+            <td>
+                Correcto: 
+                Status: 200
+                Json: 
+                {
+                    "mensaje": "Mascota registrada con exito!!"
+                },
+
+                Incorrecto:
+                Status: 404
+                Body Json: 
+                {
+                    "mensaje": "No se pudo registrar la mascota"
+                },
+
+                Error:
+                Status: 500
+                Body Json:
+                {
+                    "mensaje": "Error del servidor" + error
+                }
+            </td>
+        </tr>
+        <tr>
+            <td> Programador </td>
+            <td> Sharit Daniela Vargas Almario </td>
+        </tr>
+    </table>
+
+
+    <hr>
+
+    <h3> Requerimiento listar Mascota: </h3>
+    <table>
+        <tr>
+            <td>Numero</td>
+            <td> 2 </td>
+        </tr>
+        <tr>
+            <td>Nombre del servicio</td>
+            <td>Listar Mascota</td>
+        </tr>
+        <tr>
+            <td>Url</td>
+            <td>/listarMascota</td>
+        </tr>
+        <tr>
+            <td>Descripción</td>
+            <td>Permite listar todos los Mascota registrados en la base de datos</td>
+        </tr>
+        <tr>
+            <td>Verbo http</td>
+            <td>Get</td>
+        </tr>
+        <tr>
+            <td>Header</td>
+            <td> Token: token </td>
+        </tr>
+        <tr>
+            <td>Usuario</td>
+            <td>Administrador</td>
+        </tr>
+        <tr>
+            <td>Petición body-form-data </td>
+            <td>Null</td>
+        </tr>
+        <tr>
+            <td>Respuesta json</td>
+            <td>
+                Correcto :
+                Status: 200
+                Json : 
+                {
+                    "Mascota": [
+                        {
+                            "nombre": "nina",
+                            "id": 23,
+                            "race_name": "chihuahua",
+                            "category_name": "catdos",
+                            "photo": "photo-sm-1.svg",
+                            "gender_name": "hembra"
+                        },
+
+                },
+
+                Incorrecto : 
+                Status : 404
+                Body Json : 
+                {
+                    "mensaje":"No hay Mascota registradas"
+                },
+
+                Error:
+                Status: 500
+                Body: Json :
+                {
+                    "mensaje": "Error del servidor" + error
+                }
+            </td>
+        </tr>
+        <tr>
+            <td> Programador </td>
+            <td> Sharit Daniela Vargas Almario </td>
+        </tr>
+    </table>
+    
+    
+    <hr>
+
+    <h3> Requerimiento actualizar Mascota </h3>
+
+    <table>
+        <tr>
+            <td> Numero </td>
+            <td> 3 </td>
+        </tr>
+        <tr>
+            <td> Nombre del servicio </td>
+            <td> Actualizar Mascota </td>
+        </tr>
+        <tr>
+            <td> Url </td>
+            <td>/actualizarMascota/23 </td>
+        </tr>
+        <tr>
+            <td> Descripción </td>
+            <td> Permite actualizar los Mascota registrados en la base de datos </td>
+        </tr>
+        <tr>
+            <td> Verbo HTTP </td>
+            <td> Put </td>
+        </tr>
+        <tr>
+            <td> Header </td>
+            <td> Token: token </td>
+        </tr>
+        <tr>
+            <td> Usuario </td>
+            <td> Administrador </td>
+        </tr>
+        <tr>
+            <td> Petición body-form-data </td>
+            <td>
+                Json : 
+                {
+                    "Nombre":"nina nina",
+                    "race_id":"1",
+                    category_id":"2",
+                    "Photo":"foto.svg",
+                    "gender_id":"2"
+
+               }
+            </td>
+        </tr>
+        <tr>
+            <td> Respuestas Json </td>
+            <td>
+                Correcto:
+                Status: 201
+                Body Json:
+                {
+                    "mensaje": "Se actualizo la mascota correctamente"
+                },
+
+                Incorrecto:
+                Status: 403
+                Body json: 
+                {
+                    "mensaje": "No se pudo actualizar la mascota"
+                },
+
+                Error:
+                Status: 500,
+                Body Json :
+                {
+                    "mensaje": "Error del servidor" + error
+                }
+            </td>
+        </tr>
+        <tr>
+            <td> Programador </td>
+            <td> Sharit Daniela Vargas Almario </td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h3> Requerimiento eliminar Mascota </h3>
+
+    <table>
+        <tr>
+            <td> Numero </td>
+            <td> 4 </td>
+        </tr>
+        <tr>
+            <td> Nombre del servicio </td>
+            <td> Eliminar Mascota </td>
+        </tr>
+        <tr>
+            <td> Url </td>
+            <td>/eliminarMascota/23 </td>
+        </tr>
+        <tr>
+            <td> Descripción </td>
+            <td> Permite Eliminar los Mascota que estan en la base de datos </td>
+        </tr>
+        <tr>
+            <td> Verbo HTTP </td>
+            <td> Delete </td>
+        </tr>
+        <tr>
+            <td> Header </td>
+            <td> Token: token </td>
+        </tr>
+        <tr>
+            <td> Usuario </td>
+            <td> Administrador </td>
+        </tr>
+        <tr>
+            <td> Petición body-form-data </td>
+            <td> Null </td>
+        </tr>
+        <tr>
+            <td> Respuestas Json </td>
+            <td>
+                Correcto: 
+                Status: 200
+                Body Json: 
+                {
+                    "mensaje": "Se elimino la mascota"
+                },
+
+                Incorrecto:
+                Status: 404
+                Body Json: 
+                {
+                    "mensaje": "No se pudo eliminar la mascota"
+                },
+
+                Error:
+                Status: 500
+                Body Json: 
+                {
+                    "mensaje": "Error del servidor" + error
+                }
+            </td>
+        </tr>
+        <tr>
+            <td> Programador </td>
+            <td> Sharit Daniela Vargas Almario </td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h3> Requerimiento buscar Mascota </h3>
+
+    <table>
+        <tr>
+            <td> Numero </td>
+            <td> 5 </td>
+        </tr>
+        <tr>
+            <td> Nombre del servicio </td>
+            <td> Buscar Mascota </td>
+        </tr>
+        <tr>
+            <td> Url </td>
+            <td> /buscarMascota/23 </td>
+        </tr>
+        <tr>
+            <td> Descripción </td>
+            <td> Permite buscar una mascota en especifico por su id </td>
+        </tr>
+        <tr>
+            <td> Verbo HTTP </td>
+            <td> get </td>
+        </tr>
+        <tr>
+            <td> Header </td>
+            <td> Token: token </td>
+        </tr>
+        <tr>
+            <td> Usuario </td>
+            <td> Administrador </td>
+        </tr>
+        <tr>
+            <td> Peticion body-form-data </td>
+            <td> Null </td>
+        </tr>
+        <tr>
+            <td> Respuestas Json </td>
+            <td>
+                Correcto: 
+                Status: 200
+                Body Json:
+                "mascota": [
+                        {
+                            "nombre": "nina",
+                            "id": 223,
+                            "race_name": "chihuahua",
+                            "category_name": "catdos",
+                            "photo": "Foto.svg",
+                            "gender_name": "Hembra"
+                        }
+                    ]
+
+
+                Incorrecto:
+                Status: 404
+                Body Json:
+                {
+                    "mensaje":"Error al buscar la mascota"
+                },
+
+                Error:
+                Status: 500
+                Body Json:
+                {
+                    "mensaje": "Error del servidor" + error
+                }
+            </td>
+        </tr>
+        <tr>
+            <td> Programador </td>
+            <td> Sharit Daniela Vargas Almario </td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,35 +1,35 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import cors from 'cors';
-import rutaMascotas from './src/routes/Mascotas.route.js';
-import rutaUsuario from './src/routes/Usuario.route.js';
-import rutaOpcion from './src/routes/Opcion.route.js';
+import express from 'express'
+import body_parser from 'body-parser'
+import cors from 'cors'
+import routerCategoria from './src/routes/categorias.js'
+import routerGenero from './src/routes/generos.js'
+import routerMascota from './src/routes/mascotas.js'
+import routerRaza from './src/routes/razas.js'
+import routerUsuario from './src/routes/usuarios.js'
+import routerValidar from './src/routes/validacion.js'
 
-const servidor = express();
+const servidor = express()
+servidor.use(cors())
 
-// Habilita CORS
-servidor.use(cors());
+servidor.use(body_parser.json())
+servidor.use(body_parser.urlencoded({extend: false}))
 
-// Configura body-parser para manejar solicitudes POST
-servidor.use(bodyParser.urlencoded({ extended: false }));
-servidor.use(bodyParser.json());
+servidor.use("/categorias",routerCategoria)
+servidor.use("/generos",routerGenero)
+servidor.use("/mascotas",routerMascota)
+servidor.use("/razas",routerRaza)
+servidor.use("/usuarios",routerUsuario)
+servidor.use(routerValidar)
 
-// Rutas
-servidor.use('/mascotas', rutaMascotas);
-servidor.use('/usuario', rutaUsuario);
-servidor.use('/opciones', rutaOpcion);
+servidor.set("view engine", "ejs")
+servidor.set("views", "./view")
 
-// Configuración de vistas y archivos estáticos
-servidor.set("view engine", "ejs");
-servidor.set("views", "./view");
-servidor.use(express.static('./public'));
+servidor.use(express.static('./public'))
 
-// Ruta para mostrar un documento
 servidor.get("/document", (req, res) => {
-    res.render("document.ejs");
-});
+    res.render("DocumentKaren.ejs")
+})
 
-// Inicia el servidor en el puerto 3000
 servidor.listen(3000, () => {
-    console.log('Servidor funcionando con el puerto 3000');
-});
+    console.log('Servidor funcionando');
+})
